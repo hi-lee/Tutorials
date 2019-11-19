@@ -1,0 +1,66 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class JMenuTest extends JFrame implements ActionListener{
+	JTextField tf; //멤버변수로 사용
+	JMenuTest() {
+		JMenuBar jmb = new JMenuBar();
+		JMenu jmu1 = new JMenu("파일");
+		JMenu jmu2 = new JMenu("편집");
+		JMenu jmu3 = new JMenu("보기");
+		
+		JMenuItem jmi1 = new JMenuItem("새로만들기");
+		JMenuItem jmi2 = new JMenuItem("열기");
+		JMenuItem jmi3 = new JMenuItem("저장");
+		jmu1.add(jmi1);
+		jmu1.add(jmi2);
+		jmu1.add(jmi3);
+		
+		JMenuItem jmi4 = new JMenuItem("잘라내기");
+		JMenuItem jmi5 = new JMenuItem("복사");
+		JMenuItem jmi6 = new JMenuItem("붙여넣기");
+		jmu2.add(jmi4);
+		jmu2.add(jmi5);
+		jmu2.add(jmi6);
+		
+		JMenuItem jim7 = new JMenuItem("도구모음");
+		JMenuItem jim8 = new JMenuItem("상태표시줄");
+		jmu3.add(jim7);
+		jmu3.add(jim8);
+
+		jmb.add(jmu1);
+		jmb.add(jmu2);
+		jmb.add(jmu3);
+//		add 순서대로 메뉴 붙음
+		
+		setJMenuBar(jmb);
+		
+		tf = new JTextField(20);
+		tf.setEditable(false);
+		add(tf,"South");
+		jmi1.addActionListener(this); //객체에 대한 this -> jmi1을 가르킴
+		jmi2.addActionListener(this);
+		jmi3.addActionListener(this);
+		jmi4.addActionListener(this);
+		jmi5.addActionListener(this);
+		jmi6.addActionListener(this);
+		
+		setSize(300, 200);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public static void main(String[] args) {
+		new JMenuTest();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) { //add unimplements method, 할일지정
+		// TODO Auto-generated method stub
+		tf.setText(e.getActionCommand());
+		System.out.println(e.getActionCommand());
+//		버튼마다 할일지정 -> 어떤버튼이 들어왔는지 평가: 조건문
+	}
+}

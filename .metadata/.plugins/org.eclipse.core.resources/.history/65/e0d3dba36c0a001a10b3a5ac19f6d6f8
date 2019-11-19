@@ -1,0 +1,29 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class Ex11_01 extends JFrame {
+	JCheckBox c1,c2,c3;
+	JTextField tf;
+	
+	public Ex11_01() {
+		// TODO Auto-generated constructor stub
+		super("체크박스 버튼 만들기");
+		setLayout(new BorderLayout());
+		JPanel p1 = new JPanel();
+		p1.add(c1 = new JCheckBox("음악감상"));
+		p1.add(c2 = new JCheckBox("등산"));
+		p1.add(c3 = new JCheckBox("조깅"));
+		JPanel p2 = new JPanel();
+		p2.add(tf = new JTextField(10));
+		
+		add(p1, "North");
+		add(p2, "Center");
+		setSize(300,200);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	public static void main(String[] args) {
+		new Ex11_01();
+		
+	}
+}

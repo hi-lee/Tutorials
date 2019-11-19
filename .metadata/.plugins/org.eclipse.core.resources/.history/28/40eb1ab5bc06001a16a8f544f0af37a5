@@ -1,0 +1,41 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class JLabelTextFrame extends JFrame {
+	JTextField tf;
+	JTextArea ta;
+	JPasswordField pf;
+
+	JLabelTextFrame() {
+
+		setLayout(new FlowLayout());	//컴포넌트가 옆으로 흐름
+		JLabel lb4 = new JLabel("<html><font color='red'>red</font></html");
+		JLabel lb1 = new JLabel("이름");
+		JLabel lb2 = new JLabel("주소");
+		JLabel lb3 = new JLabel("비밀");
+		JLabel label = new JLabel("Text Color: Red");
+		label.setForeground(Color.red);
+		tf = new JTextField(20);
+		ta = new JTextArea(7, 20);
+		pf = new JPasswordField(20);
+		tf.setText("JText");
+		tf.setHorizontalAlignment(SwingConstants.CENTER);
+		ta.setText(tf.getText());	//tf에 입력된 텍스트 필드를 구해서(getText) 지정된 문자열을 텍스트필드에 씀(setText)
+		add(lb1);
+		add(tf); 
+		add(lb2);
+		add(ta);
+		add(lb3);
+		add(lb4);
+		add(label);
+		add(pf);
+//		컴포넌트를 add시키고 나서 setSize, setVisible 설정
+		setSize(300, 300); 
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+
+	public static void main(String[] args) {
+		JLabelTextFrame j = new JLabelTextFrame();
+	}
+}

@@ -1,0 +1,29 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class EX09_02 extends JApplet implements Runnable {
+	int num;
+
+	public void init() {
+		EX09_02 t = new EX09_02();
+		t.start();
+	}
+
+	public void paint(Graphics g) {
+		g.setColor(Color.blue);
+		for (int i = 0; i > 0; i++) {
+			num = 100 + (i * 20);
+			g.drawString("JAVA Japplet", 100, num);
+		}
+	}
+
+	public void run() {
+		try {
+			while (true) {
+				paint(getGraphics());
+			}
+		} catch (Exception e) {
+		}
+	}
+
+}

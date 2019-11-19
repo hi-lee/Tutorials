@@ -1,0 +1,26 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class CalculatorForm extends JFrame {
+	String[] title = { "C", "¡ç", "%", "¡À", "7", "8", "9", "¡¿", "4", "5", "6", "-", "1", "2", "3", "+", " ", "0", ".",
+			"=" };
+
+	public CalculatorForm() {
+		super("°è»ê±â");
+		GridLayout g = new GridLayout(5, 4);
+		setLayout(g);
+		JButton b[] = new JButton[20];
+		for (int i = 0; i < 20; i++) {
+			b[i] = new JButton(title[i]);
+			add(b[i]);
+		}
+		setSize(400, 200);
+		setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		CalculatorForm cf = new CalculatorForm();
+		cf.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+
+}

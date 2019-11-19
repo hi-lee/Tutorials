@@ -1,0 +1,77 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.*;
+
+public class ActionEventTest extends JFrame implements ActionListener {
+	JButton jbtn1, jbtn2, jbtn3, jbtn4;
+	JTextField tf;
+	JLabel jb1;
+	String name;
+
+	ActionEventTest() {
+		super("ActionEvnet 처리");
+		setLayout(new BorderLayout());
+//		BorderLayout-> 컴포넌트가 1개만 보임, 패널에 버튼 4개 넣어서 패널 위치를 North로 지정
+		
+		JPanel jp1 = new JPanel();
+		jbtn1 = new JButton("입력");
+		jp1.add(jbtn1);
+		jbtn2 = new JButton("확인");
+		jp1.add(jbtn2);
+		jbtn3 = new JButton("옵션");
+		jp1.add(jbtn3);
+		jbtn4 = new JButton("메시지");
+		jp1.add(jbtn4);
+		add(jp1, "North");
+		
+		JPanel jp2 = new JPanel();
+		jb1 = new JLabel("출력");
+		tf = new JTextField(10);
+		jp2.add(jb1); 
+		jp2.add(tf);
+		add(jp2, "South");
+
+		jbtn1.addActionListener(this);
+		jbtn2.addActionListener(this);
+		jbtn3.addActionListener(this);
+		jbtn4.addActionListener(this);
+
+		setSize(300, 200);
+		setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		if (e.getSource() == jbtn1) { //getSource: 버튼객체 자체, 동일한 커맨드(같은 이름)가 있을 경우 사용(actionCommand 사용x)
+			name = JOptionPane.showInputDialog(this, "이름을 입력하세요!"); //JOptionPane:dialog창(확인,오류창)
+			name = sc.next();
+			System.out.println(name);
+		}
+		if (e.getSource() == jbtn2) {
+			int con = JOptionPane.showConfirmDialog(this, "확인?");
+			if (con == JOptionPane.YES_NO_OPTION);	{ 						
+				// System.exit(0);
+				if(JOptionPane.YES_NO_OPTION == 0) {
+					System.out.println(jb1.setText(name));
+				}
+			}
+		}
+		if (e.getSource() == jbtn3) {
+			String[] option = { "검색", "추가", "취소" };
+			JOptionPane.showOptionDialog(this, "원하는 작업 선택", "옵션 대화상자", JOptionPane.YES_NO_CANCEL_OPTION,
+					JOptionPane.INFORMATION_MESSAGE, null, option, option[0]);
+		}
+		if (e.getSource() == jbtn4) {
+			JOptionPane.showMessageDialog(this, "메시지 대화상자");
+		}
+	}
+
+	public static void main(String[] args) {
+		ActionEventTest aet = new ActionEventTest();
+		aet.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+
+}

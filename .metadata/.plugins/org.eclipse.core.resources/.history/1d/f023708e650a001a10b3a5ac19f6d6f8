@@ -1,0 +1,46 @@
+import java.awt.event.*;
+
+import javax.swing.*;
+
+public class KeyInputEvent extends JFrame implements KeyListener {
+	String msg;
+	JLabel sbar;
+	public KeyInputEvent() {
+		super("키보드에서의 InputEvent");
+		sbar = new JLabel();
+		add(sbar);
+		addKeyListener(this);
+		setSize(300,200);
+		setVisible(true);
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		msg = "KeyPressed : " + e.getKeyText(e.getKeyCode());
+		if(e.isShiftDown()) { msg += "<Shift>"; }
+		if(e.isControlDown()) { msg += "<Ctrl>"; }
+		if(e.isAltDown()) { msg += "<Alt>";}
+		
+		sbar.setText(msg);
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		msg = "KeyReleased : " + e.getKeyText(e.getKeyCode());
+		if(e.isShiftDown()) { msg += "<Shift>";}
+		if(e.isControlDown()) { msg += "<Crtl>";}
+		if(e.isAltDown()) { msg += "<Alt>"; }
+		
+		sbar.setText(msg);
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public static void main(String[] args) {
+		KeyInputEvent kie = new KeyInputEvent();
+		kie.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+}
